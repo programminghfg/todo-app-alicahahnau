@@ -1,6 +1,7 @@
 <script>
         import { onMount } from "svelte";
         import { browser } from "$app/environment";
+        import ToDo from '../lib/ToDo.svelte';
 
         let todoText = "";
         let todos = [];
@@ -64,18 +65,179 @@
 </div>
 <h1 style="font-family: 'Nanum Pen Script', cursive;font-size: 62px;">Do Whatchu Gotta Do</h1>
 </div>
-{#each todos as todo, index}
-        <!-- todo -->
-        <div class="todo-entry" class:done={todo.done}>
-                <!-- text -->
-                <div style="font-family: 'Nanum Pen Script', cursive;"><h2>{todo.text}</h2></div>
-                <!-- checkboxen -->
-                <input type="checkbox" bind:value={todo.done} />
-                <button
-                        class="delete"
-                        on:click={() => {
-                                remove(index);
-                        }}>X</button
-                >
-        </div>
-{/each}
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
+
+.maincontent {
+    text-align: center;
+}
+
+.h1 {
+    text-align: center;
+}
+
+.catheaderimg {
+    height: 20%;
+    width: 20%;
+    margin-left: -200px;
+}
+
+.actionbuttons {
+    float: left;
+}
+
+.abutton {
+    float: left;
+    background-color: rgb(206, 205, 205);
+    border-radius: 45px;
+    padding: 8px 10px;
+    margin-left: 30px;
+    border: 0;
+}
+
+.sidebuttons {
+    float: left;
+    background-color: rgb(202, 201, 201);
+    border-radius: 45px;
+    padding: 15px;
+    margin-left: 20px;
+    margin-right: -100px;
+}
+
+.sbutton1 {
+    background-color: rgb(255, 255, 0);
+    border-radius: 45px;
+    margin: 5px;
+    padding: 15px;
+    border: 0;
+}
+
+.sbutton2 {
+    background-color: rgb(105, 252, 215);
+    border-radius: 45px;
+    margin: 5px;
+    padding: 15px;
+    border: 0;
+}
+
+.sbutton3 {
+    background-color: rgb(45, 17, 88);
+    border-radius: 45px;
+    margin: 5px;
+    padding: 15px;
+    border: 0;
+}
+
+.sbutton4 {
+    background-color: rgb(255, 179, 231);
+    border-radius: 45px;
+    margin: 5px;
+    padding: 15px;
+    border: 0;
+}
+
+.center-block {
+    margin: auto;
+    display: block;
+}
+
+.delete {
+    background-color: white;
+    border: none;
+}
+
+.delete:hover {
+    background-color: grey;
+    font-weight: 700;
+}
+
+.done {
+    color: grey;
+}
+
+.todo-entry {
+    margin: auto;
+    margin-top: 20px;
+    margin-left: 30%;
+    margin-right: 30%;
+    display: block;
+    padding: auto;
+    border-bottom: 1px;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-color: black;
+    border-style: solid;
+}
+
+.form {
+    display: block;
+    width: 300px;
+    background-color: #F3EDD3;
+    padding: 0;
+    text-align: center;
+}
+
+.form .form-title {
+    text-align: center;
+    padding: 5px;
+    margin: 0;
+    margin-bottom: 15px;
+}
+
+.form label {
+    color: black;
+}
+
+.form input[type=text],
+.form input[type=password] {
+    display: block;
+}
+
+input[type=text],
+input[type=password] {
+    display: inline-block;
+    color: black;
+    padding: 11px;
+    width: 250px;
+    box-sizing: border-box;
+    background-color: rgba(0, 0, 0, 0.25);
+    border: none;
+    border-radius: 8px;
+    margin: 7px auto;
+    transition: background-color 0.5s ease;
+}
+
+input[type=text]:focus,
+input[type=password]:focus {
+    background-color: #4cdf7851;
+}
+
+.addbutton {
+    border: none;
+    color: white;
+    display: inline-block;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 11px 50px;
+    border-radius: 9px;
+    margin: 5px;
+    border-bottom-style: solid;
+    border-bottom-width: 3px;
+    transition: text-shadow 0.3s ease;
+    background-color: #4cdf78;
+    border-color: #53A574;
+}
+
+.addbutton:active {
+    position: relative;
+    top: 1px;
+    border-bottom-width: 2px;
+}
+
+.addbutton:hover {
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, .3)
+}
+</style>
