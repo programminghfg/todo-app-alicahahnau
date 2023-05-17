@@ -38,7 +38,6 @@
                 saveTodos();
         }
 </script>
-<p>test</p>
 <div class="all">
 <div class="actionbuttons">
         <button class="abutton" on:click={remove}>Papierkorb</button>
